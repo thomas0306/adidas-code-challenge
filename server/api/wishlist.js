@@ -30,7 +30,7 @@ let wishlist = router
 
 .post('/wishlist', (req, res, next) => {
     const identifier = identifierHelper.generateUniqueCamelCaseWord(5, Object.keys(data.wishlists));
-    data.wishlists[identifier] = [{article: 'BK1250'}];
+    data.wishlists[identifier] = [];
     res.json({
         success: true,
         identifier,
