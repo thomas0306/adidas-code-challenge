@@ -28,4 +28,14 @@ let wishlist = router
     }
 })
 
+.post('/wishlist', (req, res, next) => {
+    const identifier = identifierHelper.generateUniqueCamelCaseWord(5, Object.keys(data.wishlists));
+    data.wishlists[identifier] = [{article: 'BK1250'}];
+    res.json({
+        success: true,
+        identifier,
+        wishlist: data.wishlists[identifier],
+    })
+})
+
 module.exports = wishlist;
