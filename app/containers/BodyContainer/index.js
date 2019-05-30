@@ -13,6 +13,7 @@ import { compose } from 'redux';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import Wishlist from '../../components/Wishlist/Loadable';
 import SuggestionList from './../../components/SuggestionList/Loadable';
 
 import messages from './messages';
@@ -23,12 +24,12 @@ export function BodyContainer({
 }) {
   return (
     <Row className="w-100">
-      <Col lg={9}>
+      <Col lg={suggestions.length > 0 ? 6 : 12}>
         <h1><FormattedMessage {...messages.wishlist}/> ({wishlist.length})</h1>
-        {JSON.stringify(wishlist)}
+        <Wishlist wishlist={wishlist} />
       </Col>
       {suggestions.length > 0 &&
-        <Col lg={3}>
+        <Col lg={6}>
           <h1><FormattedMessage {...messages.products}/> ({suggestions.length})</h1>
           <SuggestionList suggestions={suggestions} />
         </Col>

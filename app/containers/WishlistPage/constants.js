@@ -10,3 +10,8 @@ export const CHANGE_CRITERIA = 'app/WishlistPage/CHANGE_CRITERIA';
 
 export const FETCH_SUGGESTIONS = 'app/WishlistPage/FETCH_SUGGESTIONS';
 export const SUGGESTIONS_RECEIVED = 'app/WishlistPage/SUGGESTIONS_RECEIVED';
+
+export const SET_WISHLIST_NAME = 'app/WishlistPage/SET_WISHLIST_NAME';
+export const FETCH_WISHLIST = 'app/WishlistPage/FETCH_WISHLIST';
+export const WISHLIST_RECEIVED = 'app/WishlistPage/WISHLIST_RECEIVED';
+export const POST_WISHLIST = 'app/WishlistPage/POST_WISHLIST';

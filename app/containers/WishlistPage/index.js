@@ -4,7 +4,7 @@
  *
  */
 
-import React, { memo } from 'react';
+import React, { useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -19,28 +19,43 @@ import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 
-import { changeCriteria, fetchSuggestions } from './actions';
+import { changeCriteria, fetchSuggestions, setWishlistName, fetchWishlist, getNewWishList } from './actions';
 
 import AppBar from '../../components/AppBar/Loadable';
 import BodyContainer from '../BodyContainer/Loadable';
 
 export function WishlistPage({
   criteria,
-  onChangeCriteria,
   wishlist,
   suggestions,
+  onChangeCriteria,
   onSuggestionsSearchClick,
+  fetchWishlist,
+  setWishlistName,
+  registerNewWishList,
+  match,
 }) {
   useInjectReducer({ key: 'wishlistPage', reducer });
   useInjectSaga({ key: 'wishlistPage', saga });
 
+  const identifier = match.params.identifier || '';
+  useEffect(() => {
+    if (identifier === '') {
+      registerNewWishList();
+    } else {
+      setWishlistName(identifier);
+      fetchWishlist();
+    }
+    
+  }, []);
+
   return (
     <div>
       <Helmet>
-        <title>WishlistPage</title>
+        <title>WishlistPage ({identifier})</title>
         <meta name="description" content="Description of WishlistPage" />
       </Helmet>
-      <AppBar criteria={criteria} onChangeCriteria={onChangeCriteria} onSuggestionsSearchClick={onSuggestionsSearchClick}/>
+      <AppBar criteria={criteria} onChangeCriteria={onChangeCriteria} onSuggestionsSearchClick={onSuggestionsSearchClick} />
       <BodyContainer wishlist={wishlist} suggestions={suggestions} />
     </div>
   );
@@ -48,9 +63,13 @@ export function WishlistPage({
 
 WishlistPage.propTypes = {
   criteria: PropTypes.string,
-  onChangeCriteria: PropTypes.func,
   wishlist: PropTypes.array,
   suggestions: PropTypes.array,
+  onChangeCriteria: PropTypes.func,
+  onSuggestionsSearchClick: PropTypes.func,
+  fetchWishlist: PropTypes.func,
+  setWishlistName: PropTypes.func,
+  registerNewWishList: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -64,6 +83,9 @@ function mapDispatchToProps(dispatch) {
   return {
     onChangeCriteria: evt => dispatch(changeCriteria(evt.target.value)),
     onSuggestionsSearchClick: evt => dispatch(fetchSuggestions()),
+    fetchWishlist: () => dispatch(fetchWishlist()),
+    setWishlistName: name => dispatch(setWishlistName(name)),
+    registerNewWishList: () => dispatch(getNewWishList()),
   };
 }
 
