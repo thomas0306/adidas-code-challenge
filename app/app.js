@@ -17,6 +17,13 @@ import history from 'utils/history';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'sanitize.css/sanitize.css';
 
+// Fontawesome
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faStroopwafel)
+
 // Import root app
 import App from 'containers/App';
 
