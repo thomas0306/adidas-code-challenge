@@ -58,4 +58,21 @@ let wishlist = router
         res.send(404).send('Wishlist not found.');
     }
 })
+
+.delete('/wishlist/:identifier/item/:item', (req, res, next) => {
+    const identifier = req.params.identifier;
+    const itemUUID = req.params.item;
+
+    if (Object.keys(data.wishlists).find(key => key === identifier) !== undefined) {
+        data.wishlists[identifier] = data.wishlists[identifier].filter(item => item.id !== itemUUID);
+        res.json({
+            success: true,
+            identifier,
+            wishlist: data.wishlists[identifier],
+        });
+    } else {
+        res.send(404).send('Wishlist not found.');
+    }
+});
+
 module.exports = wishlist;
