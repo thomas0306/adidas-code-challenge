@@ -7,7 +7,7 @@ import produce from 'immer';
 import { DEFAULT_ACTION, CHANGE_CRITERIA } from './constants';
 
 export const initialState = {
-  criteria: 'Ultraboost',
+  criteria: '',
   suggestions: [],
   wishlist: [],
 };
