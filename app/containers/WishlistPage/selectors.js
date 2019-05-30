@@ -11,10 +11,22 @@ const selectWishlistPageDomain = state => state.wishlistPage || initialState;
  * Other specific selectors
  */
 
- const makeSelectCriteria = () =>
+const makeSelectCriteria = () =>
   createSelector(
     selectWishlistPageDomain,
     substate => substate.criteria,
+  )
+
+const makeSelectWishlist = () =>
+  createSelector(
+    selectWishlistPageDomain,
+    substate => substate.wishlist,
+  )
+
+const makeSelectSuggestions = () =>
+  createSelector(
+    selectWishlistPageDomain,
+    substate => substate.suggestions,
   )
 
 /**
@@ -28,4 +40,4 @@ const makeSelectWishlistPage = () =>
   );
 
 export default makeSelectWishlistPage;
-export { selectWishlistPageDomain, makeSelectCriteria };
+export { selectWishlistPageDomain, makeSelectCriteria, makeSelectWishlist, makeSelectSuggestions };

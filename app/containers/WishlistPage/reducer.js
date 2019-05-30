@@ -4,12 +4,13 @@
  *
  */
 import produce from 'immer';
-import { DEFAULT_ACTION, CHANGE_CRITERIA } from './constants';
+import { DEFAULT_ACTION, CHANGE_CRITERIA, FETCH_SUGGESTIONS, SUGGESTIONS_RECEIVED } from './constants';
 
 export const initialState = {
   criteria: '',
   suggestions: [],
   wishlist: [],
+  loading: false,
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -18,9 +19,20 @@ const wishlistPageReducer = (state = initialState, action) =>
     switch (action.type) {
       case CHANGE_CRITERIA:
         return {
-          ...initialState,
+          ...state,
           criteria: action.payload,
-        }
+        };
+      case FETCH_SUGGESTIONS:
+        return {
+          ...state,
+          loading: true,
+        };
+      case SUGGESTIONS_RECEIVED:
+          return {
+            ...state,
+            suggestions: action.payload,
+            loading: false,
+          }
       case DEFAULT_ACTION:
         break;
     }
