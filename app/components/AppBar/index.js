@@ -21,7 +21,11 @@ import Form from 'react-bootstrap/Form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-function AppBar() {
+function AppBar({
+  criteria,
+  onChangeCriteria,
+}) {
+
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand href="#home">
@@ -35,6 +39,9 @@ function AppBar() {
             </InputGroup.Text>
           </InputGroup.Prepend>
           <FormControl
+            type="text"
+            value={criteria}
+            onChange={onChangeCriteria}
             placeholder="Article"
             aria-label="Article"
             aria-describedby="suggestions"
