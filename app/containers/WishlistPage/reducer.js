@@ -4,11 +4,12 @@
  *
  */
 import produce from 'immer';
-import { DEFAULT_ACTION, CHANGE_CRITERIA, FETCH_SUGGESTIONS, SUGGESTIONS_RECEIVED } from './constants';
+import { DEFAULT_ACTION, CHANGE_CRITERIA, FETCH_SUGGESTIONS, SUGGESTIONS_RECEIVED, WISHLIST_RECEIVED, SET_WISHLIST_NAME } from './constants';
 
 export const initialState = {
   criteria: '',
   suggestions: [],
+  wishlistName: '',
   wishlist: [],
   loading: false,
 };
@@ -32,7 +33,17 @@ const wishlistPageReducer = (state = initialState, action) =>
             ...state,
             suggestions: action.payload,
             loading: false,
-          }
+          };
+      case WISHLIST_RECEIVED:
+          return {
+            ...state,
+            wishlist: action.payload,
+          };
+      case SET_WISHLIST_NAME:
+          return {
+            ...state,
+            wishlistName: action.payload,
+          };
       case DEFAULT_ACTION:
         break;
     }

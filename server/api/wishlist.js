@@ -18,9 +18,9 @@ let wishlist = router
     const targetIdentifier = req.params.identifier;
     const targetWishListKey = Object.keys(data.wishlists).find(identifier => identifier == targetIdentifier);
     if (targetWishListKey === undefined) {
-        res.send(404).json({
+        res.send(404, {
             success: false,
-            message: 'Wishlist not found',
+            message: "Wishlist not found",
         });
     } else {
         res.json({
@@ -55,7 +55,10 @@ let wishlist = router
             wishlistItem,
         });
     } else {
-        res.send(404).send('Wishlist not found.');
+        res.send(404, {
+            success: false,
+            message: 'Wishlist not found.'
+        });
     }
 })
 
@@ -71,7 +74,10 @@ let wishlist = router
             wishlist: data.wishlists[identifier],
         });
     } else {
-        res.send(404).send('Wishlist not found.');
+        res.send(404, {
+            success: false,
+            message: 'Wishlist not found.'
+        });
     }
 });
 

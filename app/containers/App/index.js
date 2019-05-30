@@ -20,6 +20,7 @@ export default function App() {
     <div>
       <Switch>
         <Route exact path="/" component={WishlistPage} />
+        <Route path="/:identifier" component={WishlistPage} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />

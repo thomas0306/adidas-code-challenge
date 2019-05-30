@@ -37,4 +37,8 @@ export default defineMessages({
     id: `${scope}.addToWishlist`,
     defaultMessage: 'Add to wishlist',
   },
+  remove: {
+    id: `${scope}.remove`,
+    defaultMessage: 'Remove',
+  },
 });
