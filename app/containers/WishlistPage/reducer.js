@@ -62,6 +62,7 @@ const wishlistPageReducer = (state = initialState, action) =>
         return {
           ...state,
           wishlistName: action.payload,
+          loading: false,
         };
       case ADD_ARTICLE:
         return {
