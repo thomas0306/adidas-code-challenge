@@ -67,7 +67,7 @@ npm run docker
 ### Day 6
 - Build enhancement backlog
 
-## Insiprations / Lesson learned
+## Inspirations / Lesson learned
 1. Connecting new concepts with existing knowledge
 
 I believe linking new knowledge with the existing knowledge is the best way of learning.
