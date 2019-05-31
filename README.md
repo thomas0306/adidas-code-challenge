@@ -14,17 +14,18 @@ npm run docker
 ```
 ## Requirements checklist
 ### Functional requirements
-- [x] Route for searching product: [GET] /api/suggestions
-- [x] Able to search for an article: [GET] /api/suggestions
-- [x] Able to get a full wishlist: [GET] /api/wishlist/:identifier
-- [x] Able to add it to a wishlist: [POST] /api/wishlist/:identifier/item
-- [x] Able to delete from a wishlist: [DELETE] /api/wishlist/:identifier/item/:id
+- [x] Route for searching product: [GET] /api/suggestions #5
+- [x] Able to search for an article: [GET] /api/suggestions #2
+- [x] Able to get a full wishlist: [GET] /api/wishlist/:identifier #6 #1
+- [x] Able to add it to a wishlist: [POST] /api/wishlist/:identifier/item #3 #20
+- [x] Able to delete from a wishlist: [DELETE] /api/wishlist/:identifier/item/:id #4 #8
 ### Non-functional requirements
-- [x] Single Page Application (SPA)
-- [x] Preferred technology stack: React & Redux
-- [x] In-memory storage backend
-- [x] Dockerized application
-- [ ] CI/CD Pipeline proposal
+- [x] Single Page Application (SPA) #14
+- [x] Preferred technology stack: React & Redux #9 #10
+- [x] In-memory storage backend #19
+- [x] Dockerized application #12
+- [ ] CI/CD Pipeline proposal #13
+- [x] Documentation #34
 
 ## Reason for choosing technologies / methodologies 
 - react-boilerplate
@@ -37,7 +38,7 @@ npm run docker
 - http-proxy-middleware
   - Reverse proxy for suggestions API
   - Prevent CORS issue
-- agile work mode
+- agile work mode / feature branch
   - Better tracking
   - Prioritization
 
