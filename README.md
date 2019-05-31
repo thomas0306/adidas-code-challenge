@@ -1,4 +1,6 @@
 # Adidas-Code-Challenge
+## Demo
+![](Demo.gif)
 ## How to deploy
 1. To run development environment
 ```bash
