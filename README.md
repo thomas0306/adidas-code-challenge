@@ -14,18 +14,18 @@ npm run docker
 ```
 ## Requirements checklist
 ### Functional requirements
-- [x] Route for searching product: [GET] /api/suggestions #5
-- [x] Able to search for an article: [GET] /api/suggestions #2
-- [x] Able to get a full wishlist: [GET] /api/wishlist/:identifier #6 #1
-- [x] Able to add it to a wishlist: [POST] /api/wishlist/:identifier/item #3 #20
-- [x] Able to delete from a wishlist: [DELETE] /api/wishlist/:identifier/item/:id #4 #8
+- [x] Route for searching product: [GET] /api/suggestions [#5](../../issues/5)
+- [x] Able to search for an article: [GET] /api/suggestions [#2](../../issues/2)
+- [x] Able to get a full wishlist: [GET] /api/wishlist/:identifier [#6](../../issues/6) [#1](../../issues/1)
+- [x] Able to add it to a wishlist: [POST] /api/wishlist/:identifier/item [#3](../../issues/3) [#20](../../issues/20)
+- [x] Able to delete from a wishlist: [DELETE] /api/wishlist/:identifier/item/:id [#4](../../issues/4) [#8](../../issues/8)
 ### Non-functional requirements
-- [x] Single Page Application (SPA) #14
-- [x] Preferred technology stack: React & Redux #9 #10
-- [x] In-memory storage backend #19
-- [x] Dockerized application #12
-- [ ] CI/CD Pipeline proposal #13
-- [x] Documentation #34
+- [x] Single Page Application (SPA) [#14](../../issues/14)
+- [x] Preferred technology stack: React & Redux [#9](../../issues/9) [#10](../../issues/10)
+- [x] In-memory storage backend [#19](../../issues/19)
+- [x] Dockerized application [#12](../../issues/12)
+- [ ] CI/CD Pipeline proposal [#13](../../issues/13)
+- [x] Documentation [#34](../../issues/34)
 
 ## Reason for choosing technologies / methodologies 
 - react-boilerplate
