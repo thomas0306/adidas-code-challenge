@@ -16,7 +16,7 @@ function Wishlist({
   wishlist,
 }) {
   return (
-    <div>
+    <div className="flex-grow-1 overflow-auto">
       {wishlist.map((product, idx) => 
         <ProductCard key={idx} {...product} />
       )}
