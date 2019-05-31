@@ -30,10 +30,16 @@ const makeSelectSuggestions = () =>
   )
 
 const makeSelectWishlistName = () =>
-    createSelector(
-      selectWishlistPageDomain,
-      substate => substate.wishlistName,
-    )
+  createSelector(
+    selectWishlistPageDomain,
+    substate => substate.wishlistName,
+  )
+
+const makeSelectLoading = () =>
+  createSelector(
+    selectWishlistPageDomain,
+    substate => substate.loading,
+  )
 
 /**
  * Default selector used by WishlistPage
@@ -46,4 +52,11 @@ const makeSelectWishlistPage = () =>
   );
 
 export default makeSelectWishlistPage;
-export { selectWishlistPageDomain, makeSelectCriteria, makeSelectWishlist, makeSelectSuggestions, makeSelectWishlistName };
+export {
+  selectWishlistPageDomain,
+  makeSelectCriteria,
+  makeSelectWishlist,
+  makeSelectSuggestions,
+  makeSelectWishlistName,
+  makeSelectLoading,
+};
