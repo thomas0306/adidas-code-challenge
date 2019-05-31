@@ -18,7 +18,7 @@ function SuggestionList({
   existingArticles,
 }) {
   return (
-    <div>
+    <div className="flex-grow-1 overflow-auto">
       {suggestions.map((product, idx) => 
         <ProductCard key={idx} {...product} disableAdd={existingArticles.find(id => id === product.productid) !== undefined}/>
       )}

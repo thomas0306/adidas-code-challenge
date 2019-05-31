@@ -17,7 +17,7 @@ import GlobalStyle from '../../global-styles';
 
 export default function App() {
   return (
-    <div>
+    <div className="h-100">
       <Switch>
         <Route exact path="/" component={WishlistPage} />
         <Route path="/:identifier" component={WishlistPage} />
