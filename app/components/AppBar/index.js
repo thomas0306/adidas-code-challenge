@@ -47,7 +47,9 @@ function AppBar({
             aria-label="Article"
             aria-describedby="suggestions"
           />
-          <Button onClick={onSuggestionsSearchClick}>Search</Button>
+          <InputGroup.Append>
+            <Button onClick={onSuggestionsSearchClick}>Search</Button>
+          </InputGroup.Append>
         </InputGroup>
       </div>
     </Navbar>
