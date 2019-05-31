@@ -23,15 +23,15 @@ export function BodyContainer({
   suggestions,
 }) {
   return (
-    <Row className="w-100">
-      <Col lg={suggestions.length > 0 ? 6 : 12}>
+    <Row className="w-100 pl-2">
+      <Col className="" lg={suggestions.length > 0 ? 6 : 12}>
         <h1><FormattedMessage {...messages.wishlist}/> ({wishlist.length})</h1>
         <Wishlist wishlist={wishlist} />
       </Col>
       {suggestions.length > 0 &&
         <Col lg={6}>
           <h1><FormattedMessage {...messages.products}/> ({suggestions.length})</h1>
-          <SuggestionList suggestions={suggestions} />
+          <SuggestionList suggestions={suggestions} existingArticles={wishlist.filter(product => product !== undefined).map(product => product.productid)}  />
         </Col>
       }
     </Row>

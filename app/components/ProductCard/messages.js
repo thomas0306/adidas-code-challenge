@@ -41,4 +41,8 @@ export default defineMessages({
     id: `${scope}.remove`,
     defaultMessage: 'Remove',
   },
+  added: {
+    id: `${scope}.added`,
+    defaultMessage: 'Added',
+  }
 });
