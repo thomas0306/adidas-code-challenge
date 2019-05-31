@@ -18,3 +18,6 @@ export const POST_WISHLIST = 'app/WishlistPage/POST_WISHLIST';
 
 export const ADD_ARTICLE = 'app/WishlistPage/ADD_ARTICLE';
 export const ARTICLE_ADDED = 'app/WishlistPage/ARTICLE_ADDED';
+
+export const DELETE_ARTICLE = 'app/WishlistPage/DELETE_ARTICLE';
+export const ARTICLE_DELETED = 'app/WishlistPage/ARTICLE_DELETED';

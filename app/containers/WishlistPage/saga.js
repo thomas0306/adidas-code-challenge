@@ -1,7 +1,7 @@
 import { put, takeLatest, all, select } from 'redux-saga/effects';
 import { makeSelectCriteria, makeSelectWishlistName } from './selectors';
-import { suggestionsReceived, setWishlistName, wishlistReceived, getNewWishList, articleAdded } from './actions';
-import { FETCH_SUGGESTIONS, FETCH_WISHLIST, POST_WISHLIST, ADD_ARTICLE } from './constants';
+import { suggestionsReceived, setWishlistName, wishlistReceived, getNewWishList, articleAdded, articleDeleted } from './actions';
+import { FETCH_SUGGESTIONS, FETCH_WISHLIST, POST_WISHLIST, ADD_ARTICLE, DELETE_ARTICLE } from './constants';
 import history from './../../utils/history';
 
 // Individual exports for testing
@@ -78,11 +78,30 @@ function* addArticleActionWatcher() {
   yield takeLatest(ADD_ARTICLE, addArticle);
 }
 
+function* deleteArticle(action) {
+  try {
+    const wishlistName = yield select(makeSelectWishlistName());
+    const id = action.payload;
+    const endpoint = `/api/wishlist/${wishlistName}/item/${id}`;
+    const response = yield fetch(endpoint, {
+      method: 'DELETE',
+    }).then(res => res.json());
+    yield put(articleDeleted(response.wishlistItem));
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+function* deleteArticleActionWatcher() {
+  yield takeLatest(DELETE_ARTICLE, deleteArticle);
+}
+
 export default function* wishlistPageSaga() {
   yield all([
     suggestionsActionWatcher(),
     getWishlistActionWatcher(),
     postWishlistActionWatcher(),
     addArticleActionWatcher(),
+    deleteArticleActionWatcher()
   ]);
 }

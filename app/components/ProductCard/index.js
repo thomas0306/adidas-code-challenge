@@ -18,7 +18,7 @@ import { faStar as faStarEmpty } from '@fortawesome/free-regular-svg-icons';
 
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import { addArticle } from '../../containers/WishlistPage/actions';
+import { addArticle, deleteArticle } from '../../containers/WishlistPage/actions';
 
 import MarkDownSpan from './MarkDownSpan';
 
@@ -34,6 +34,7 @@ function ProductCard({
   id,
   disableAdd,
   addArticleToWishlist,
+  deleteArticleFromWishlist,
 }) {
   // useInjectSaga({ key: 'wishlistPage', saga });
 
@@ -62,7 +63,7 @@ function ProductCard({
           )} <FormattedMessage {...messages.by} /> {reviewCount} <FormattedMessage {...messages.customers} /></div>
           <div className="mt-1">
             {id ?
-              <Button variant="danger"><FontAwesomeIcon icon={faMinus} /> <FormattedMessage {...messages.remove} /></Button> :
+              <Button variant="danger" onClick={() => deleteArticleFromWishlist(id)}><FontAwesomeIcon icon={faMinus}/> <FormattedMessage {...messages.remove} /></Button> :
               <Button variant="success" disabled={disableAdd} onClick={() => addArticleToWishlist({
                 displayName,
                 imageURL,
@@ -98,11 +99,13 @@ ProductCard.propTypes = {
   id: PropTypes.string,
   disableAdd: PropTypes.bool,
   addArticleToWishlist: PropTypes.func,
+  deleteArticleFromWishlist: PropTypes.func,
 };
 
 function mapDispatchToProps(dispatch) {
   return {
     addArticleToWishlist: article => dispatch(addArticle(article)),
+    deleteArticleFromWishlist: id => dispatch(deleteArticle(id)),
   }
 }
 

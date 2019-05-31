@@ -4,7 +4,7 @@
  *
  */
 import produce from 'immer';
-import { 
+import {
   DEFAULT_ACTION,
   CHANGE_CRITERIA,
   FETCH_SUGGESTIONS,
@@ -13,7 +13,10 @@ import {
   SET_WISHLIST_NAME,
   ADD_ARTICLE,
   ARTICLE_ADDED,
+  ARTICLE_DELETED,
+  DELETE_ARTICLE,
 } from './constants';
+import { actionChannel } from 'redux-saga/effects';
 
 export const initialState = {
   criteria: '',
@@ -57,11 +60,22 @@ const wishlistPageReducer = (state = initialState, action) =>
         return {
           ...state,
           loading: true,
-        }
+        };
       case ARTICLE_ADDED:
         return {
           ...state,
           wishlist: [...state.wishlist, action.payload],
+          loading: false,
+        };
+      case DELETE_ARTICLE:
+        return {
+          ...state,
+          loading: true,
+        };
+      case ARTICLE_DELETED:
+        return {
+          ...state,
+          wishlist: state.wishlist.filter(article => article.id !== action.payload),
           loading: false,
         };
       case DEFAULT_ACTION:
