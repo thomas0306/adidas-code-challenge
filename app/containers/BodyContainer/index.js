@@ -15,6 +15,7 @@ import Col from 'react-bootstrap/Col';
 
 import Wishlist from '../../components/Wishlist/Loadable';
 import SuggestionList from './../../components/SuggestionList/Loadable';
+import ShareButton from './../../components/ShareButton/Loadable';
 
 import messages from './messages';
 
@@ -25,7 +26,7 @@ export function BodyContainer({
   return (
     <Row className="w-100 pl-2">
       <Col className="" lg={suggestions.length > 0 ? 6 : 12}>
-        <h1><FormattedMessage {...messages.wishlist}/> ({wishlist.length})</h1>
+        <h1><FormattedMessage {...messages.wishlist}/> ({wishlist.length}) <ShareButton/></h1>
         <Wishlist wishlist={wishlist} />
       </Col>
       {suggestions.length > 0 &&
