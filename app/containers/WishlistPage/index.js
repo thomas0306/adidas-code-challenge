@@ -13,15 +13,19 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
 import FlexDiv from './FlexDiv';
+import AppOverlay from './AppOverlay';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
-import makeSelectWishlistPage, { makeSelectCriteria, makeSelectWishlist, makeSelectSuggestions } from './selectors';
+import makeSelectWishlistPage, { makeSelectCriteria, makeSelectWishlist, makeSelectSuggestions, makeSelectLoading } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 
-import { changeCriteria, fetchSuggestions, setWishlistName, fetchWishlist, getNewWishList, addArticle } from './actions';
+import { changeCriteria, fetchSuggestions, setWishlistName, fetchWishlist, getNewWishList } from './actions';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 import AppBar from '../../components/AppBar/Loadable';
 import BodyContainer from '../BodyContainer/Loadable';
@@ -36,6 +40,7 @@ export function WishlistPage({
   setWishlistName,
   registerNewWishList,
   match,
+  loading,
 }) {
   useInjectReducer({ key: 'wishlistPage', reducer });
   useInjectSaga({ key: 'wishlistPage', saga });
@@ -48,7 +53,7 @@ export function WishlistPage({
       setWishlistName(identifier);
       fetchWishlist();
     }
-    
+
   }, []);
 
   return (
@@ -57,6 +62,11 @@ export function WishlistPage({
         <title>WishlistPage ({identifier})</title>
         <meta name="description" content="Description of WishlistPage" />
       </Helmet>
+      {loading &&
+        <AppOverlay className="text-white d-flex justify-content-center align-items-center">
+          <FontAwesomeIcon icon={faSpinner} spin />
+        </AppOverlay>
+      }
       <AppBar criteria={criteria} onChangeCriteria={onChangeCriteria} onSuggestionsSearchClick={onSuggestionsSearchClick} />
       <BodyContainer wishlist={wishlist} suggestions={suggestions} />
     </FlexDiv>
@@ -67,6 +77,7 @@ WishlistPage.propTypes = {
   criteria: PropTypes.string,
   wishlist: PropTypes.array,
   suggestions: PropTypes.array,
+  loading: PropTypes.bool,
   onChangeCriteria: PropTypes.func,
   onSuggestionsSearchClick: PropTypes.func,
   fetchWishlist: PropTypes.func,
@@ -79,6 +90,7 @@ const mapStateToProps = createStructuredSelector({
   criteria: makeSelectCriteria(),
   wishlist: makeSelectWishlist(),
   suggestions: makeSelectSuggestions(),
+  loading: makeSelectLoading(),
 });
 
 function mapDispatchToProps(dispatch) {
