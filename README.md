@@ -24,7 +24,7 @@ npm run docker
 - [x] Preferred technology stack: React & Redux [#9](../../issues/9) [#10](../../issues/10)
 - [x] In-memory storage backend [#19](../../issues/19)
 - [x] Dockerized application [#12](../../issues/12)
-- [ ] CI/CD Pipeline proposal [#13](../../issues/13)
+- [x] CI/CD Pipeline proposal [#13](../../issues/13)
 - [x] Documentation [#34](../../issues/34)
 
 ## Reason for choosing technologies / methodologies 
