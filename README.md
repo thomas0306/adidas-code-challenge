@@ -67,7 +67,7 @@ npm run docker
 ## Insiprations / Lesson learned
 1. Connecting new concepts with existing knowledge
 
-...I believe linking new knowledge with the existing knowledge is the best way of learning.
+I believe linking new knowledge with the existing knowledge is the best way of learning.
 
 | |New Knowledge|Existing Knowledge|
 |:-:|:-------------:|:-------------:|
