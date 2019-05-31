@@ -16,6 +16,7 @@ import {
   ARTICLE_DELETED,
   DELETE_ARTICLE,
   FETCH_WISHLIST,
+  SET_LOADING,
 } from './constants';
 import { actionChannel } from 'redux-saga/effects';
 
@@ -62,7 +63,6 @@ const wishlistPageReducer = (state = initialState, action) =>
         return {
           ...state,
           wishlistName: action.payload,
-          loading: false,
         };
       case ADD_ARTICLE:
         return {
@@ -84,6 +84,11 @@ const wishlistPageReducer = (state = initialState, action) =>
         return {
           ...state,
           wishlist: state.wishlist.filter(article => article.id !== action.payload),
+          loading: false,
+        };
+      case SET_LOADING:
+        return {
+          ...state,
           loading: false,
         };
       case DEFAULT_ACTION:

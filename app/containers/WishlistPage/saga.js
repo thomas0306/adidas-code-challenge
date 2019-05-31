@@ -1,6 +1,6 @@
 import { put, takeLatest, all, select } from 'redux-saga/effects';
 import { makeSelectCriteria, makeSelectWishlistName } from './selectors';
-import { suggestionsReceived, setWishlistName, wishlistReceived, getNewWishList, articleAdded, articleDeleted } from './actions';
+import { suggestionsReceived, setWishlistName, wishlistReceived, getNewWishList, articleAdded, articleDeleted, setLoading } from './actions';
 import { FETCH_SUGGESTIONS, FETCH_WISHLIST, POST_WISHLIST, ADD_ARTICLE, DELETE_ARTICLE } from './constants';
 import history from './../../utils/history';
 
@@ -28,6 +28,7 @@ function* fetchWishlist() {
     if (response.success) {
       yield put(wishlistReceived(response.wishlist));
     } else {
+      console.log('get');
       yield put(getNewWishList());
     }
   } catch (err) {
@@ -47,6 +48,7 @@ function* postWishlist() {
       method: 'POST',
     }).then(res => res.json());
     yield put(setWishlistName(response.identifier));
+    yield put(setLoading(false));
     history.push(`/${response.identifier}`);
   } catch (err) {
     console.log(err);

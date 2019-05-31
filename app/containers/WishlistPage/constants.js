@@ -21,3 +21,5 @@ export const ARTICLE_ADDED = 'app/WishlistPage/ARTICLE_ADDED';
 
 export const DELETE_ARTICLE = 'app/WishlistPage/DELETE_ARTICLE';
 export const ARTICLE_DELETED = 'app/WishlistPage/ARTICLE_DELETED';
+
+export const SET_LOADING = 'app/WishlistPage/SET_LOADING';

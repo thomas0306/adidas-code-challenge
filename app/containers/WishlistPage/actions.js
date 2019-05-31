@@ -4,7 +4,7 @@
  *
  */
 
-import { DEFAULT_ACTION, CHANGE_CRITERIA, FETCH_SUGGESTIONS, SUGGESTIONS_RECEIVED, SET_WISHLIST_NAME, FETCH_WISHLIST, POST_WISHLIST, WISHLIST_RECEIVED, ADD_ARTICLE, ARTICLE_ADDED, DELETE_ARTICLE, ARTICLE_DELETED } from './constants';
+import { DEFAULT_ACTION, CHANGE_CRITERIA, FETCH_SUGGESTIONS, SUGGESTIONS_RECEIVED, SET_WISHLIST_NAME, FETCH_WISHLIST, POST_WISHLIST, WISHLIST_RECEIVED, ADD_ARTICLE, ARTICLE_ADDED, DELETE_ARTICLE, ARTICLE_DELETED, SET_LOADING } from './constants';
 
 export function defaultAction() {
   return {
@@ -35,6 +35,13 @@ export function setWishlistName(name) {
   return {
     type: SET_WISHLIST_NAME,
     payload: name,
+  };
+}
+
+export function setLoading(isLoading) {
+  return {
+    type: SET_LOADING,
+    payload: false,
   };
 }
 
