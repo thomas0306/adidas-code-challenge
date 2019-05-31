@@ -1,7 +1,7 @@
 import { put, takeLatest, all, select } from 'redux-saga/effects';
 import { makeSelectCriteria, makeSelectWishlistName } from './selectors';
-import { suggestionsReceived, setWishlistName, wishlistReceived, getNewWishList } from './actions';
-import { FETCH_SUGGESTIONS, FETCH_WISHLIST, POST_WISHLIST } from './constants';
+import { suggestionsReceived, setWishlistName, wishlistReceived, getNewWishList, articleAdded } from './actions';
+import { FETCH_SUGGESTIONS, FETCH_WISHLIST, POST_WISHLIST, ADD_ARTICLE } from './constants';
 import history from './../../utils/history';
 
 // Individual exports for testing
@@ -14,6 +14,10 @@ function* fetchSuggestions() {
   } catch (err) {
     console.log(err);
   }
+}
+
+function* suggestionsActionWatcher() {
+  yield takeLatest(FETCH_SUGGESTIONS, fetchSuggestions);
 }
 
 function* fetchWishlist() {
@@ -32,6 +36,10 @@ function* fetchWishlist() {
   }
 }
 
+function* getWishlistActionWatcher() {
+  yield takeLatest(FETCH_WISHLIST, fetchWishlist);
+}
+
 function* postWishlist() {
   const endpoint = '/api/wishlist';
   try {
@@ -45,16 +53,29 @@ function* postWishlist() {
   }
 }
 
-function* suggestionsActionWatcher() {
-  yield takeLatest(FETCH_SUGGESTIONS, fetchSuggestions);
-}
-
-function* getWishlistActionWatcher() {
-  yield takeLatest(FETCH_WISHLIST, fetchWishlist);
-}
-
 function* postWishlistActionWatcher() {
   yield takeLatest(POST_WISHLIST, postWishlist);
+}
+
+function* addArticle(action) {
+  try {
+    const wishlistName = yield select(makeSelectWishlistName());
+    const endpoint = `/api/wishlist/${wishlistName}/item`;
+    const response = yield fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(action.payload),
+    }).then(res => res.json());
+    yield put(articleAdded(response.wishlistItem));
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+function* addArticleActionWatcher() {
+  yield takeLatest(ADD_ARTICLE, addArticle);
 }
 
 export default function* wishlistPageSaga() {
@@ -62,5 +83,6 @@ export default function* wishlistPageSaga() {
     suggestionsActionWatcher(),
     getWishlistActionWatcher(),
     postWishlistActionWatcher(),
+    addArticleActionWatcher(),
   ]);
 }

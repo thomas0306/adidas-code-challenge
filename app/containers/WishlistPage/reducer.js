@@ -4,7 +4,16 @@
  *
  */
 import produce from 'immer';
-import { DEFAULT_ACTION, CHANGE_CRITERIA, FETCH_SUGGESTIONS, SUGGESTIONS_RECEIVED, WISHLIST_RECEIVED, SET_WISHLIST_NAME } from './constants';
+import { 
+  DEFAULT_ACTION,
+  CHANGE_CRITERIA,
+  FETCH_SUGGESTIONS,
+  SUGGESTIONS_RECEIVED,
+  WISHLIST_RECEIVED,
+  SET_WISHLIST_NAME,
+  ADD_ARTICLE,
+  ARTICLE_ADDED,
+} from './constants';
 
 export const initialState = {
   criteria: '',
@@ -29,21 +38,32 @@ const wishlistPageReducer = (state = initialState, action) =>
           loading: true,
         };
       case SUGGESTIONS_RECEIVED:
-          return {
-            ...state,
-            suggestions: action.payload,
-            loading: false,
-          };
+        return {
+          ...state,
+          suggestions: action.payload,
+          loading: false,
+        };
       case WISHLIST_RECEIVED:
-          return {
-            ...state,
-            wishlist: action.payload,
-          };
+        return {
+          ...state,
+          wishlist: action.payload,
+        };
       case SET_WISHLIST_NAME:
-          return {
-            ...state,
-            wishlistName: action.payload,
-          };
+        return {
+          ...state,
+          wishlistName: action.payload,
+        };
+      case ADD_ARTICLE:
+        return {
+          ...state,
+          loading: true,
+        }
+      case ARTICLE_ADDED:
+        return {
+          ...state,
+          wishlist: [...state.wishlist, action.payload],
+          loading: false,
+        };
       case DEFAULT_ACTION:
         break;
     }

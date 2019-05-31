@@ -19,7 +19,7 @@ import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 
-import { changeCriteria, fetchSuggestions, setWishlistName, fetchWishlist, getNewWishList } from './actions';
+import { changeCriteria, fetchSuggestions, setWishlistName, fetchWishlist, getNewWishList, addArticle } from './actions';
 
 import AppBar from '../../components/AppBar/Loadable';
 import BodyContainer from '../BodyContainer/Loadable';

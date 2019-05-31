@@ -15,3 +15,6 @@ export const SET_WISHLIST_NAME = 'app/WishlistPage/SET_WISHLIST_NAME';
 export const FETCH_WISHLIST = 'app/WishlistPage/FETCH_WISHLIST';
 export const WISHLIST_RECEIVED = 'app/WishlistPage/WISHLIST_RECEIVED';
 export const POST_WISHLIST = 'app/WishlistPage/POST_WISHLIST';
+
+export const ADD_ARTICLE = 'app/WishlistPage/ADD_ARTICLE';
+export const ARTICLE_ADDED = 'app/WishlistPage/ARTICLE_ADDED';
