@@ -68,6 +68,7 @@ npm run docker
 1. Connecting new concepts with existing knowledge
 
 ...I believe linking new knowledge with the existing knowledge is the best way of learning.
+
 | |New Knowledge|Existing Knowledge|
 |:-:|:-------------:|:-------------:|
 |1|Redux state/action concept|Makrov decision process|
@@ -76,7 +77,8 @@ npm run docker
 
 2. What's new in React ecosystem?
 
-... The last time I have used React & Redux was 2 years back. I felt in the latest version it is already a big difference:
+The last time I have used React & Redux was 2 years back. I felt in the latest version it is already a big difference:
+
 | |New Concept|
 |:-:|:-:|
 |1|react-saga (async/await/yield) for API calls|
@@ -84,4 +86,4 @@ npm run docker
 
 3. Identifiers from repl.it
 
-... Inspired by the web application, I have used concatenated words for unique identification, i.e. WhimsicalCheapAdministrator
+Inspired by the web application, I have used concatenated words for unique identification, i.e. WhimsicalCheapAdministrator
