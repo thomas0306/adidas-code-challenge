@@ -90,3 +90,5 @@ The last time I have used React & Redux was 2 years back. I felt in the latest v
 3. Identifiers from repl.it
 
 Inspired by the web application, I have used concatenated words for unique identification, i.e. WhimsicalCheapAdministrator
+
+[![Analytics](https://ga-beacon.appspot.com/UA-141212027-1/home-page)](https://github.com/thomas0306/adidas-code-challenge)
