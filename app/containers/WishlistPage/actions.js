@@ -4,7 +4,7 @@
  *
  */
 
-import { DEFAULT_ACTION, CHANGE_CRITERIA, FETCH_SUGGESTIONS, SUGGESTIONS_RECEIVED, SET_WISHLIST_NAME, FETCH_WISHLIST, POST_WISHLIST, WISHLIST_RECEIVED, ADD_ARTICLE, ARTICLE_ADDED } from './constants';
+import { DEFAULT_ACTION, CHANGE_CRITERIA, FETCH_SUGGESTIONS, SUGGESTIONS_RECEIVED, SET_WISHLIST_NAME, FETCH_WISHLIST, POST_WISHLIST, WISHLIST_RECEIVED, ADD_ARTICLE, ARTICLE_ADDED, DELETE_ARTICLE, ARTICLE_DELETED } from './constants';
 
 export function defaultAction() {
   return {
@@ -68,5 +68,19 @@ export function articleAdded(article) {
   return {
     type: ARTICLE_ADDED,
     payload: article,
+  }
+}
+
+export function deleteArticle(id) {
+  return {
+    type: DELETE_ARTICLE,
+    payload: id,
+  }
+}
+
+export function articleDeleted(id) {
+  return {
+    type: ARTICLE_DELETED,
+    payload: id,
   }
 }

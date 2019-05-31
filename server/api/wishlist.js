@@ -71,7 +71,7 @@ let wishlist = router
         res.json({
             success: true,
             identifier,
-            wishlist: data.wishlists[identifier],
+            wishlistItem: itemUUID,
         });
     } else {
         res.send(404, {
